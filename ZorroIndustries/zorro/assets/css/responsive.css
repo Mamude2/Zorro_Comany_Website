@@ -1,0 +1,99 @@
+/* ============================================================
+   RESPONSIVE.CSS — Mobile-first breakpoint overrides
+   Base styles in style.css are authored for desktop (>=1200px)
+   for this project's grid-heavy layout; this file scales down.
+   ============================================================ */
+
+/* ---------- Large desktop guard ---------- */
+@media (min-width: 1440px) {
+  .container { max-width: 1320px; }
+}
+
+/* ---------- Laptops / small desktops ---------- */
+@media (max-width: 1180px) {
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+  .values-grid { grid-template-columns: repeat(4, 1fr); }
+  .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+  .footer-col:last-child { grid-column: span 3; }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 992px) {
+  .nav-links { display: none; }
+  .nav-actions .btn-primary { display: none; }
+  .hamburger { display: flex; }
+
+  .hero-grid { grid-template-columns: 1fr; text-align: left; }
+  .hero-visual { order: -1; max-width: 340px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); row-gap: 1.4rem; }
+
+  .about-grid, .why-grid { grid-template-columns: 1fr; }
+  .about-visual, .why-visual { order: -1; max-width: 420px; margin: 0 auto; }
+  .why-visual { display: none; }
+
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .sub-grid { grid-template-columns: repeat(2, 1fr); }
+  .vm-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: repeat(3, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline { grid-template-columns: 1fr 1fr; row-gap: 2.4rem; }
+  .timeline::before { display: none; }
+
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; row-gap: 2.4rem; }
+  .footer-col:last-child { grid-column: span 2; }
+}
+
+/* ---------- Mobile nav drawer ---------- */
+@media (max-width: 992px) {
+  .nav-drawer.is-open { transform: translateX(0); }
+  .nav-drawer a { color: var(--white); font-size: 1.05rem; font-weight: 500; }
+  .nav-drawer .btn-primary { margin-top: 1rem; align-self: flex-start; }
+  .nav-scrim {
+    position: fixed; inset: 0; background: rgba(8,21,39,0.6);
+    z-index: 930; opacity: 0; visibility: hidden; transition: all .3s var(--ease);
+  }
+  .nav-scrim.is-open { opacity: 1; visibility: visible; }
+}
+
+/* ---------- Small tablets / large phones ---------- */
+@media (max-width: 768px) {
+  .section { padding: 4.5rem 0; }
+  .hero { padding-top: 5.5rem; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+
+  .feature-list { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .sub-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-list { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 110px; }
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item.tall { grid-row: span 1; }
+  .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 1.1rem; }
+  .lightbox-close { width: 38px; height: 38px; top: 1rem; right: 1rem; }
+
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-col:last-child { grid-column: span 1; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 480px) {
+  .container { padding: 0 1.2rem; }
+  .hero-content .lead { font-size: 1rem; }
+  .hero-panel { display: none; }
+  .hero-visual { display: none; }
+  .brand-text span { display: none; }
+
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .back-to-top { right: 1.2rem; bottom: 1.2rem; width: 42px; height: 42px; }
+  .wa-float { left: 1.2rem; bottom: 1.2rem; width: 48px; height: 48px; font-size: 1.3rem; }
+}

@@ -1,0 +1,52 @@
+/* ============================================================
+   ANIMATIONS.CSS — Elegant, restrained motion only
+   Driven by a lightweight IntersectionObserver in main.js that
+   toggles the .in-view class; no animation library required.
+   ============================================================ */
+
+[data-aos] {
+  opacity: 0;
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+  will-change: transform, opacity;
+}
+[data-aos].in-view { opacity: 1; transform: none !important; }
+
+[data-aos="fade-up"] { transform: translateY(28px); }
+[data-aos="fade-left"] { transform: translateX(-28px); }
+[data-aos="fade-right"] { transform: translateX(28px); }
+[data-aos="zoom-in"] { transform: scale(0.94); }
+
+/* Stagger children of grids automatically via inline --d custom property */
+[data-aos][style*="--d"] { transition-delay: var(--d); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Hero load-in sequence */
+.hero-content .eyebrow,
+.hero-content h1,
+.hero-content p.lead,
+.hero-content .hero-actions,
+.hero-content .hero-stats {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: heroReveal .8s var(--ease) forwards;
+}
+.hero-content .eyebrow { animation-delay: .15s; }
+.hero-content h1 { animation-delay: .3s; }
+.hero-content p.lead { animation-delay: .45s; }
+.hero-content .hero-actions { animation-delay: .6s; }
+.hero-content .hero-stats { animation-delay: .75s; }
+.hero-visual { opacity: 0; animation: heroReveal 1s var(--ease) forwards; animation-delay: .5s; }
+
+@keyframes heroReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content .eyebrow, .hero-content h1, .hero-content p.lead,
+  .hero-content .hero-actions, .hero-content .hero-stats, .hero-visual {
+    animation: none; opacity: 1; transform: none;
+  }
+}
